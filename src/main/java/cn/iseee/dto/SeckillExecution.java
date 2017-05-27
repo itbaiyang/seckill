@@ -1,6 +1,7 @@
 package cn.iseee.dto;
 
 import cn.iseee.entity.SuccessKilled;
+import cn.iseee.enums.SeckillStatEnum;
 
 /**
  * 封装秒杀执行后结果
@@ -17,17 +18,17 @@ public class SeckillExecution {
     //秒杀成功对象
     private SuccessKilled successKilled;
 
-    public SeckillExecution(long seckillId, int state, String stateInfo, SuccessKilled successKilled) {
+    public SeckillExecution(long seckillId, SeckillStatEnum statEnum, SuccessKilled successKilled) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getStateInfo();
         this.successKilled = successKilled;
     }
 
-    public SeckillExecution(long seckillId, int state, String stateInfo) {
+    public SeckillExecution(long seckillId, SeckillStatEnum statEnum) {
         this.seckillId = seckillId;
-        this.state = state;
-        this.stateInfo = stateInfo;
+        this.state = statEnum.getState();
+        this.stateInfo = statEnum.getStateInfo();
     }
 
     public long getSeckillId() {
