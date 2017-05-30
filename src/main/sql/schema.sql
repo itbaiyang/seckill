@@ -18,7 +18,7 @@ PRIMARY KEY (seckill_id),
 KEY idx_start_time(start_time),
 KEY idx_end_time(end_time),
 KEY idx_create_time(create_time)
-)ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='秒杀库存表';
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='秒杀库存表';
 
 -- 初始化数据
 INSERT INTO seckill(name, number, start_time, end_time)

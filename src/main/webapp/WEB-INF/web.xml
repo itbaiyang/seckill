@@ -4,6 +4,49 @@
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0"
          metadata-complete="true">
+    <!--修改wervlet-->
 
-  <!-- 修改版本 -->
+    <!--
+    DispatcherServlet主要用作职责调度工作，本身主要用于控制流程，主要职责如下：
+        1、文件上传解析，如果请求类型是multipart将通过MultipartResolver进行文件上传解析；
+        2、通过HandlerMapping，将请求映射到处理器（返回一个HandlerExecutionChain，它包括一个处理器、多个HandlerInterceptor拦截器）；
+        3、通过HandlerAdapter支持多种类型的处理器(HandlerExecutionChain中的处理器)；
+        4、通过ViewResolver解析逻辑视图名到具体视图实现；
+        5、本地化解析；
+        6、渲染具体的视图等；
+        7、如果执行过程中遇到异常将交给HandlerExceptionResolver来解析。
+
+        从以上我们可以看出DispatcherServlet主要负责流程的控制（而且在流程中的每个关键点都是很容易扩展的）。
+    -->
+    <servlet>
+        <servlet-name>seckill-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--配置springMVC需加载的配置文件
+          spring-dao.xml,spring-service.xml,spring-web.xml
+          Mybatis -> spring ->springMVC
+        -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-*.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>seckill-dispatcher</servlet-name>
+        <!--默认匹配所有的亲求-->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--<filter>-->
+        <!--<filter-name>charsetFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>encoding</param-name>-->
+            <!--<param-value>UTF-8</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>forceEncoding</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!-- 修改版本 -->
 </web-app>

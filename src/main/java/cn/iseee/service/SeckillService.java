@@ -17,6 +17,26 @@ import java.util.List;
 public interface SeckillService {
 
     /**
+     * 添加秒杀项
+     * @return
+     */
+    Seckill insertOneSeckill(Seckill seckill);
+
+
+    /**
+     * 删除秒杀项
+     * @return
+     */
+    int deleteOneSeckill(long seckillId);
+
+
+    /**
+     * 修改秒杀项
+     * @return
+     */
+    Seckill updateOneSeckill(Seckill seckill);
+
+    /**
      * 查询所有秒杀记录
      * @return
      */

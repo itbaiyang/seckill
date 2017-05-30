@@ -4,13 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.iseee.dao.SeckillDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
+    <insert id="insertSeckill" useGeneratedKeys="true" keyProperty="seckillId" parameterType="cn.iseee.entity.Seckill">
+        INSERT ignore INTO seckill(name, number, start_time, end_time, create_time)
+        VALUES (#{name}, #{number}, #{startTime}, #{endTime}, #{createTime})
+    </insert>
+
+    <delete id="deleteSeckill" parameterType="long">
+        DELETE FROM seckill
+        WHERE seckill_id=#{seckillId}
+    </delete>
+
+    <update id="updateSeckill" parameterType="cn.iseee.entity.Seckill">
+        UPDATE seckill
+        SET name=#{name},
+            number=#{number},
+            start_time=#{startTime},
+            end_time=#{endTime},
+            create_time=#{createTime}
+        WHERE seckill_id = #{seckillId}
+    </update>
+
 
     <update id="reduceNumber">
         <!-- 具体的sql语句 -->
         UPDATE
-          seckill
+        seckill
         SET
-          number = number -1
+        number = number -1
         WHERE seckill_id = #{seckillId}
         and start_time <![CDATA[ <= ]]> #{killTime}
         and end_time >= #{killTime}
